@@ -1,0 +1,28 @@
+ Write a C program "cat.c" which takes a text file name as input
+and prints the contents of the file in the stdout/ console. The filename
+must be provided as a command-line argument (e.g. cat ABC.txt). Handle
+errors/exceptions generated during the execution of the program.
+
+CODE:
+
+#include<stdio.h>
+#include<stdlib.h>
+int main( int argc, char* argv[] )
+{
+  FILE *fp;
+  char c;
+  fp=fopen(argv[1],"r");
+  if(fp == NULL)
+  {
+   printf("File doesn't exit");
+   exit(0);
+}
+c=fgetc(fp);
+while(c!= EOF )
+{
+ printf("%c" ,c);
+ c=fgetc(fp);
+}
+fclose(fp);
+return 0;
+}
